@@ -1,0 +1,33 @@
+{
+  "name": "mychurchapp",
+  "version": "1.0.0",
+  "description": "myChurchApp helps in management of membership and keeps tab of their givings, attendance, participation and involvement in the ministry.",
+  "main": "server.js",
+  "scripts": {
+   "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gmaheri/myChurchApp.git"
+  },
+  "keywords": [
+    "churchApp",
+    "church",
+    "ministry",
+    "membership",
+    "offerings"
+  ],
+  "author": "Gregory S. Maheri",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gmaheri/myChurchApp/issues"
+  },
+  "homepage": "https://github.com/gmaheri/myChurchApp#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.2"
+  }
+}
