@@ -1,0 +1,27 @@
+<div class="card card-body">
+  <h3>Members</h3>
+  <form action="/members" method="post" >
+    <div class="form-group">
+      <label for="name" >Name</label>
+      <input type="text" class="form-control" name="name" placeholder="Jon Smith" required>
+    </div>
+    <div class="form-group">
+      <label for="gender">Gender</label>
+      <select class="form-control" name="gender" required>
+        <option value="" disabled selected hidden>Select Gender</option>
+        <option value="Female" >Female</option>
+        <option value="Male" >Male</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="memberNo">Membership Number</label>
+      <input type="text" class="form-control" name="memberNo" placeholder="328900" required>
+    </div>
+    <div class="form-group">
+      <label for="cellphone">Cell Phone</label>
+      <input type="text" class="form-control" name="cellphone" placeholder="+2547xxxxxxxx" required>
+    </div>
+
+  </form>
+
+</div>
