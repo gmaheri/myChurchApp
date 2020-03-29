@@ -1,0 +1,15 @@
+{{#each members}}
+<div class="card card-body mb-2">
+  <p>Name: {{name}}</p>
+  <p>Email: {{email}}</p>
+  <p>Gende: {{gender}}</p>
+  <p>Telephone: {{telephone}}</p>
+  <p>Membership Number: {{memberNo}}</p>
+  <p>Home Fellowship Group: {{HFG}}</p>
+  <p>address: {{address}}</p>
+  <p>Ministries: {{ministries}}</p>
+  <p>Photo: {{photo}}</p>
+</div>
+{{else}}
+<p>No members added yet!</p>
+{{/each}}

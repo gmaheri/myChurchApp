@@ -3,6 +3,7 @@ const path = require('path');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const exphbs  = require('express-handlebars');
+const bodyParser = require('body-parser')
 const connectDB = require('./config/db')
 
 //Load enviroment variables
@@ -18,8 +19,12 @@ const app = express();
 //enable cors
 app.use(cors());
 
-//body-Parser
-app.use(express.json());
+// Enable body-Parser
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+
+// parse application/json
+app.use(bodyParser.json())
 
 //handlebars middleware
 app.engine('handlebars', exphbs());
@@ -28,6 +33,7 @@ app.set('view engine', 'handlebars');
 //routes
 app.use('/mychurch', require('./routes/members'));
 app.use('/mychurch/member/add', require('./routes/members'));
+app.use('/mychurch/allmembers', require('./routes/members'));
 app.use('/mychurch/about', require('./routes/members'));
 
 const PORT = 3000;

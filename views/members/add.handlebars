@@ -1,17 +1,23 @@
+{{#each errors}}
+<div class="alert alert-danger">{{text}}</div>
+
+{{else}}
+
+{{/each}}
+
 <div class="card card-body">
   <h3>Add a Member</h3>
-    <form>
+    <form action="/mychurch/allmembers" method="post">
       <div class="form-row">
         <div class="form-group col-md-6">
           <label for="name">Name</label>
-          <input type="text" class="form-control" id="name" placeholder="Name" required>
+          <input type="text" class="form-control" name="name" placeholder="Name" required>
         </div>
         <div class="form-group col-md-6">
           <label for="email">Email</label>
-          <input type="email" class="form-control" id="email" placeholder="Email" required>
+          <input type="email" class="form-control" name="email" placeholder="Email" required>
         </div>
       </div>
-
       <div class="form-row">
         <div class="form-group col-md-6">
           <label for="gender">Gender</label>
@@ -23,31 +29,32 @@
         </div>
       <div class="form-group col-md-6">
         <label for="telephone">Telephone</label>
-        <input type="text" class="form-control" id="telephone" placeholder="Telephone" required>
+        <input type="Number" class="form-control" name="telephone" placeholder="Telephone" required>
         </div>
       </div>
     <div class="form-row">
       <div class="form-group col-md-6">
         <label for="memberNo">Membership Number</label>
-        <input type="text" class="form-control" id="memberNo" placeholder="Member Number" required>
+        <input type="text" class="form-control" name="memberNo" placeholder="Member Number" required>
       </div>
       <div class="form-group col-md-6">
-        <label for="hfg">Home Fellowship Group</label>
-        <select id="hfg" class="form-control" required>
+        <label for="HFG">Home Fellowship Group</label>
+        <select name="HFG" class="form-control" required>
           <option value="" disabled selected hidden>Select HFG</option>
           <option value="posta" >Posta</option>
           <option value="Syokanthi">Syokanthi</option>
+          <option value="Syokanthi">Kikambala</option>
         </select>
       </div>
     </div>
     <div class="form-group">
       <label for="address">Address</label>
-      <input type="text" class="form-control" id="address" placeholder="Posta Mtwapa, along Mombasa-Malindi highway" required>
+      <input type="text" class="form-control" name="address" placeholder="Posta Mtwapa, along Mombasa-Malindi highway" required>
     </div>
 
    <div class="form-group">
     <label for="ministries">Ministries (Ctr + click to select more than one)</label>
-    <select multiple class="form-control" id="ministries" required>
+    <select multiple class="form-control" name="ministries" required>
       <option>Eves Ministry</option>
       <option>Youth & Teens</option>
       <option>Choir</option>
@@ -55,6 +62,16 @@
       <option>Ushering</option>
     </select>
   </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text" name="photo">Upload Photo</span>
+      </div>
+      <div class="custom-file">
+        <input type="file" class="custom-file-input" name="photofile"
+          aria-describedby="photo">
+        <label class="custom-file-label" for="photofile">Choose file</label>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary" >Submit</button>
   </form>
 </div>

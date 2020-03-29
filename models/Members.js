@@ -4,43 +4,37 @@ const MembersSchema = new mongoose.Schema({
   name:{
     type: String,
     trim: true,
-    required:[true, 'Please enter members names']
-  },
-  gender: {
-    type: String,
-    required:[true, 'Gender field cannot be empty']
-  },
-  memberNo: {
-    type: Number,
-    required:[true, 'please eneter member no'],
-    unique: true,
-  },
-  telephone: {
-    type: Number,
-    required:[true, 'please enter phone number']
-  },
-  ministries:{
-    type:[String],
-    trim: true
-  },
-  dateJoined:{
-    type: Date,
-    default: Date.now
+    required:true
   },
   email:{
     type: String,
     required: true
   },
-  maritalStatus:{
+  gender: {
     type: String,
+    required:true
+  },
+  telephone: {
+    type: Number,
+    required:true,
+  },
+  memberNo: {
+    type: Number,
+    required:true,
+    unique: true
+  },
+  HFG: {
+    type: String,
+    required:true
   },
   address: {
     type: String,
   },
-  familyMembers:{
-    type:[String]
+  ministries:{
+    type:[String],
+    trim: true
   },
-  HFG: {
+  photo:{
     type: String
   },
   createdAt:{
