@@ -3,6 +3,7 @@ const path = require('path');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const exphbs  = require('express-handlebars');
+const methodOverride = require('method-override')
 const bodyParser = require('body-parser')
 const connectDB = require('./config/db')
 
@@ -30,11 +31,16 @@ app.use(bodyParser.json())
 app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
 
+//enable method-overide
+app.use(methodOverride('_method'))
+
 //routes
-app.use('/mychurch', require('./routes/members'));
-app.use('/mychurch/member/add', require('./routes/members'));
-app.use('/mychurch/allmembers', require('./routes/members'));
-app.use('/mychurch/about', require('./routes/members'));
+app.use('/mychurch', require('./routes/members')); //home route
+app.use('/mychurch/member/add', require('./routes/members')); //add member route
+app.use('/mychurch/member/edit/:id', require('./routes/members')); //edit member route
+app.use('/mychurch/member/delete/:id', require('./routes/members')); //delete member route
+app.use('/mychurch/allmembers', require('./routes/members')); //view all member route
+app.use('/mychurch/about', require('./routes/members')); //About route
 
 const PORT = 3000;
 

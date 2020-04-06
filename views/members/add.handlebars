@@ -7,11 +7,11 @@
 
 <div class="card card-body">
   <h3>Add a Member</h3>
-    <form action="/mychurch/allmembers" method="post">
+    <form action="/mychurch/allmembers" method="post" autocomplete="off">
       <div class="form-row">
         <div class="form-group col-md-6">
-          <label for="name">Name</label>
-          <input type="text" class="form-control" name="name" placeholder="Name" required>
+          <label for="name"> Full Name</label>
+          <input type="text" class="form-control" name="name" placeholder="Full Name" required>
         </div>
         <div class="form-group col-md-6">
           <label for="email">Email</label>
@@ -62,7 +62,7 @@
       <option>Ushering</option>
     </select>
   </div>
-    <div class="input-group">
+    <div class="input-group mb-2">
       <div class="input-group-prepend">
         <span class="input-group-text" name="photo">Upload Photo</span>
       </div>
@@ -72,6 +72,16 @@
         <label class="custom-file-label" for="photofile">Choose file</label>
       </div>
     </div>
-    <button type="submit" class="btn btn-primary" >Submit</button>
+    <div class="form-group">
+      <button type="submit" class="btn btn-info">
+        <i class="fa fa-database"></i>
+        Submit
+      </button>
+      <a href="/mychurch/allmembers" class="btn btn-danger">
+        <i class="fa fa-list-alt"></i>
+        View All
+      </a>
+
+    </div>
   </form>
 </div>

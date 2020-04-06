@@ -1,0 +1,78 @@
+{{#each errors}}
+<div class="alert alert-danger">{{text}}</div>
+
+{{else}}
+
+{{/each}}
+
+<div class="card card-body">
+  <h3>Edit Member</h3>
+  <form action="/mychurch/member/edit/{{member._id}}?_method=PUT" method="post" autocomplete="off">
+    <input type="hidden" name="_method" value="PUT">
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="name">Name</label>
+          <input type="text" class="form-control" name="name" placeholder="Name" value="{{member.name}}" required>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" name="email" placeholder="Email" value= "{{member.email}}"  required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="gender">Gender</label>
+          <select class="form-control" name="gender" value="{{member.gender}}" required>
+          <option value="" disabled selected hidden>Select Gender</option>
+          <option value="Female" >Female</option>
+          <option value="Male" >Male</option>
+        </select>
+        </div>
+      <div class="form-group col-md-6">
+        <label for="telephone">Telephone</label>
+        <input type="Number" class="form-control" name="telephone" placeholder="Telephone" value="{{member.telephone}}" required>
+        </div>
+      </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="memberNo">Membership Number</label>
+        <input type="text" class="form-control" name="memberNo" placeholder="Member Number" value="{{member.memberNo}}" required>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="HFG">Home Fellowship Group</label>
+        <select name="HFG" class="form-control" value="{{member.HFG}}" required>
+          <option value="" disabled selected hidden>Select HFG</option>
+          <option value="posta" >Posta</option>
+          <option value="Syokanthi">Syokanthi</option>
+          <option value="Kikambala">Kikambala</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="address">Address</label>
+      <input type="text" class="form-control" name="address" placeholder="Posta Mtwapa, along Mombasa-Malindi highway" value="{{member.address}}" required>
+    </div>
+
+   <div class="form-group">
+      <label for="ministries">Ministries (Ctr + click to select more than one)</label>
+      <select multiple class="form-control" name="ministries" value="{{member.ministries}}" required>
+        <option>Eves Ministry</option>
+        <option>Youth & Teens</option>
+        <option>Choir</option>
+        <option>Marrieds</option>
+        <option>Ushering</option>
+      </select>
+    </div>
+      <div class="input-group mb-2">
+        <div class="input-group-prepend">
+          <span class="input-group-text" name="photo">Upload Photo</span>
+        </div>
+        <div class="custom-file">
+          <input type="file" class="custom-file-input" name="photofile"
+            aria-describedby="photo">
+          <label class="custom-file-label" for="photofile">Choose file</label>
+        </div>
+      </div>
+    <button type="submit" class="btn btn-primary"><i class="fa fa-database"></i> Submit</button>
+  </form>
+</div>
