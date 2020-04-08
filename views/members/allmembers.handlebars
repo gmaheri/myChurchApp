@@ -1,15 +1,13 @@
 <h3><a class="btn btn-secondary" href="/mychurch/member/add"><i class="fa fa-plus"></i> Add Member</a>   Members List</h3>
-<!-- Search form -->
+
 <div class="search_box">
-  <input class="form-control mb-2" id="search_input" type="text" placeholder="Search Member" aria-label="Search">
+  <input class="form-control mb-2" id="search_input" type="text" placeholder="Search member by name" aria-label="Search" onkeyup="searchMember()">
 </div>
 
-<table class="table table-striped">
+<table class="table table-striped" id="memberTable">
   <thead>
     <tr>
-      <div class="name">
       <th>Full Name</th>
-      </div>
       <th>Email</th>
       <th>Gender</th>
       <th>Telephone</th>
@@ -20,12 +18,10 @@
       <th></th>
     </tr>
   </thead>
-    <tbody id="table_body">
+    <tbody id="table-body">
       {{#each members}}
-      <tr>
-        <div class="name">
-        <td>{{this.name}}</td>
-        </div>
+      <tr id="trow">
+        <td id="name">{{this.name}}</td>
         <td>{{this.email}}</td>
         <td>{{this.gender}}</td>
         <td>{{this.telephone}}</td>
@@ -41,18 +37,30 @@
       {{/each}}
     </tbody>
   <script>
-    const search_input = document.querySelector("#search_input");
-    search_input.addEventListener("keyup", (e) => {
-      const search_item = e.target.value.toLowerCase();
-      const span_items= document.getElementById('table_body')
-      //console.log(span_items)
-      span_items.forEach(function(item){
-        if(item.textContent.toLocaleLowerCase().indexOf(search_item) != -1){
-          item.closest("li").style.display = "block"
-        }else {
-           item.closest("li").style.display = "none"
+    const searchMember = () => {
+      const searchInput = document.getElementById("search_input").value.toUpperCase();
+      const memberTable = document.getElementById("memberTable");
+      const tr = memberTable.getElementsByTagName("tr");
+
+      for(var i=0; i<tr.length; i++){
+        let td = tr[i].getElementsByTagName("td")[0];
+
+        if(td){
+          let textvalue = td.textContent || td.innerHTML;
+
+          if(textvalue.toLocaleUpperCase().indexOf(searchInput) > -1){
+            tr[i].style.display = "";
+          } else{
+            tr[i].style.display = "none"
+          }
         }
-      })
-    });
+      }
+
+
+
+
+      //console.log(searchInput)
+    };
+
   </script>
 </table>

@@ -321,5 +321,48 @@
 <script src="scripts.js"></script>
 
 </div>
+
+
+<script>
+  const search_input = document.querySelector("#search_input");
+  search_input.addEventListener("keyup", (e) => {
+    const search_item = e.target.value.toLowerCase();
+    const trow = document.querySelectorAll("td")
+   // console.log(trow)
+    //console.log(typeof(trow))
+    trow.forEach(function(item){
+      if(item.textContent.toLocaleLowerCase().indexOf(search_item) != -1){
+        item.closest("td").style.display = "block"
+      }else {
+         item.closest("td").style.display = "none"
+      }
+    })
+  });
+
+  const search_input = document.querySelector("#search_input");
+    search_input.addEventListener("keyup", (e) => {
+      const search_item = e.target.value.toLowerCase();
+      const memberTable = document.getElementById('memberTable');
+      const tr = memberTable.getElementsByTagName("tr");
+      //const trow = document.querySelectorAll("td")
+     // console.log(trow)
+      //console.log(typeof(trow))
+      for(var i=0; i<tr.length; i++){
+        let td = tr[i].getElementsByTagName("td")[0];
+
+        if(td){
+          let textValue = td.textContent || td.innerHTML;
+
+          if(textValue.toLocaleLowerCase().indexOf(search_item) > -1){
+            tr[1].style.display = "";
+          }
+        } else {
+           tr[i].style.display = "none";
+        }
+      }
+
+    });
+</script>
+
 </body>
 </html>
