@@ -31,6 +31,7 @@ router.post('/allmembers',(req, res) => {
  new Member(newMember)
  .save()
  .then(member => {
+   req.flash('success_msg', 'Member added successfully!')
     res.redirect('/mychurch/allmembers')
  })
  .catch(error => {
@@ -87,6 +88,7 @@ router.put('/member/edit/:id',(req, res) => {
 
     member.save()
     .then(member => {
+      req.flash('success_msg', 'Member updated successfully!')
       res.redirect('members/allmembers')
       //implement a code where if the users (while edting the existing record) enters the same memberNo as the one exisitng in the DB, throw an error.
     })
@@ -100,6 +102,7 @@ router.put('/member/edit/:id',(req, res) => {
 router.get('/member/delete/:id', (req, res) => {
   Member.deleteOne({_id: req.params.id})
   .then(() => {
+    req.flash('success_msg', 'Member has been deleted succesfully!')
     res.redirect('members/allmembers')
   })
   .catch(error => {
