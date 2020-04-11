@@ -33,6 +33,10 @@ app.use(bodyParser.json())
 app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
 
+//Static folder
+app.use(express.static(path.join(__dirname, 'public')));
+
+
 //enable method-overide
 app.use(methodOverride('_method'));
 
