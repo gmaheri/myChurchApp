@@ -14,7 +14,7 @@ router.post('/login', (req, res, next)=> {
   passport.authenticate('local', {
     successRedirect: '/mychurch/allmembers',
     failureRedirect: '/mychurch/user/login',
-    failureFlash: true
+    failureFlash: true,
   })(req, res, next);
 });
 
@@ -61,7 +61,7 @@ router.post('/register', (req, res) => {
             newUser.password = hash;
             newUser.save()
             .then(user => {
-              req.flash('success_msg', `Dear ${user.name}, you are now registered. Please log in.`);
+              req.flash('success_msg', `Dear ${user.name.toUpperCase()}, you are now registered. Please log in.`);
               res.redirect('/mychurch/user/login')
             })
             .catch(error => {

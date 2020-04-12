@@ -34,9 +34,6 @@ const MembersSchema = new mongoose.Schema({
     type:[String],
     trim: true
   },
-  photo:{
-    type: String
-  },
   user: {
     type: String,
     required: true
