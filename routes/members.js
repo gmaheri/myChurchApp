@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const Member = require('../models/Members')
+const Member = require('../models/Members');
+const {ensureAuthenticated} = require('../helpers/auth')
 
 //home route
 router.get('/', (req, res) => {
@@ -11,7 +12,7 @@ router.get('/', (req, res) => {
 });
 
 //add a member
-router.get('/member/add',(req, res) => {
+router.get('/member/add', ensureAuthenticated, (req, res) => {
   res.render('members/add')
 });
 
@@ -26,7 +27,8 @@ router.post('/allmembers',(req, res) => {
    HFG: req.body.HFG,
    address: req.body.address,
    ministries: req.body.ministries,
-   photo: req.body.photo
+   photo: req.body.photo,
+   user: req.user.id
  };
  new Member(newMember)
  .save()
@@ -49,7 +51,7 @@ router.post('/allmembers',(req, res) => {
 });
 
 //view all members
-router.get('/allmembers', (req, res) => {
+router.get('/allmembers', ensureAuthenticated, (req, res) => {
   Member.find({}).lean()
   .sort({date:'desc'})
   .then(members => {
@@ -63,7 +65,7 @@ router.get('/allmembers', (req, res) => {
 });
 
 //Edit Member page
-router.get('/member/edit/:id',(req, res) => {
+router.get('/member/edit/:id',ensureAuthenticated, (req, res) => {
   Member.findOne({_id: req.params.id}).lean()
   .then(member => {
     res.render('members/editmember', {
@@ -73,7 +75,7 @@ router.get('/member/edit/:id',(req, res) => {
 });
 
 //Updating a member
-router.put('/member/edit/:id',(req, res) => {
+router.put('/member/edit/:id', ensureAuthenticated, (req, res) => {
   Member.findOne({_id: req.params.id})
   .then(member => {
     //set new values
@@ -99,7 +101,7 @@ router.put('/member/edit/:id',(req, res) => {
 });
 
 //Delete a Member
-router.get('/member/delete/:id', (req, res) => {
+router.get('/member/delete/:id', ensureAuthenticated, (req, res) => {
   Member.deleteOne({_id: req.params.id})
   .then(() => {
     req.flash('success_msg', 'Member has been deleted succesfully!')

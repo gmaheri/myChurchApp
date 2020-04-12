@@ -37,6 +37,10 @@ const MembersSchema = new mongoose.Schema({
   photo:{
     type: String
   },
+  user: {
+    type: String,
+    required: true
+  },
   createdAt:{
     type: Date,
     default: Date.now

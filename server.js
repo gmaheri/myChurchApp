@@ -7,10 +7,14 @@ const methodOverride = require('method-override');
 const flash = require('connect-flash');
 const session = require('express-session');
 const bodyParser = require('body-parser');
+const passport = require('passport')
 const connectDB = require('./config/db');
 
 //Load enviroment variables
 dotenv.config({path: './config/config.env'});
+
+//Passport Config
+require('./config/passport')(passport);
 
 //connect to DB
 connectDB();
@@ -47,6 +51,10 @@ app.use(session({
   saveUninitialized: true,
 }));
 
+//Passport middlewares
+app.use(passport.initialize());
+app.use(passport.session());
+
 //flash
 app.use(flash());
 
@@ -55,6 +63,7 @@ app.use(function(req, res, next) {
   res.locals.success_msg = req.flash('success_msg');
   res.locals.error_msg = req.flash('error_msg');
   res.locals.error = req.flash('error');
+  res.locals.user = req.user || null;
   next();
 })
 
