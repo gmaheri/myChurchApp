@@ -4,8 +4,7 @@
   "description": "myChurchApp helps in management of membership and keeps tab of their givings, attendance, participation and involvement in the ministry.",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon server.js"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
