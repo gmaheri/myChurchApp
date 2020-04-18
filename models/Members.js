@@ -36,7 +36,7 @@ const MembersSchema = new mongoose.Schema({
   },
   user: {
     type: String,
-    required: true
+    //required: true
   },
   createdAt:{
     type: Date,

@@ -94,8 +94,7 @@ router.put('/member/edit/:id', ensureAuthenticated, (req, res) => {
       res.redirect('members/allmembers')
       //implement a code where if the users (while edting the existing record) enters the same memberNo as the one exisitng in the DB, throw an error.
     })
-  })
-  .catch(error => {
+  }).catch(error => {
     console.error(error);
   });
 });
